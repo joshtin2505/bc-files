@@ -1,7 +1,7 @@
 {
   "name": "bcfiles",
   "description": "Bundle creator files",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "src/index.ts",
   "type": "commonjs",
   "scripts": {
