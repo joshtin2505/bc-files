@@ -1,8 +1,20 @@
 import fs from "fs"
 import path from "path"
+import type { CreateFileProps, CreateFolderProps } from "./types.d"
 
-// Función para crear una carpeta de manera asíncrona
-async function createFolder(folderPath: string): Promise<void> {
+async function createFolder({ folder }: CreateFolderProps): Promise<void> {
+  if (folder instanceof Array) {
+    for (const f of folder) {
+      await createFolder({ folder: f })
+    }
+    return
+  }
+  const folderPath = path.join(process.cwd(), folder)
+  if (fs.existsSync(folderPath)) {
+    console.log(`La carpeta ya existe: ${folderPath}`)
+    return
+  }
+
   try {
     fs.mkdir(folderPath, { recursive: true }, (err) => {
       if (err) {
@@ -20,51 +32,37 @@ async function createFolder(folderPath: string): Promise<void> {
   }
 }
 
-// Función para crear un archivo con contenido por defecto de manera asíncrona
-async function createFile(
-  fileName: string | null,
-  filePath: string,
-  content: string
-): Promise<void> {
-  fs.writeFile(filePath, content, (err) => {
+async function createFile(props: CreateFileProps): Promise<void> {
+  if (props instanceof Array) {
+    for (const p of props) {
+      await createFile(p)
+    }
+    return
+  }
+
+  const { fileName, relativePath, content, extension } = props
+
+  if (fileName === "") {
+    console.error("No se ha proporcionado un nombre de archivo")
+    return
+  }
+  const filePathRelative = path.join(process.cwd(), relativePath)
+  if (!fs.existsSync(filePathRelative)) {
+    console.error(`La ruta no existe: ${filePathRelative}`)
+    return
+  } else if (!fs.lstatSync(filePathRelative).isDirectory()) {
+    console.error(`La ruta no es una carpeta: ${filePathRelative}`)
+    return
+  }
+  const fileFullName = extension ? `${fileName}.${extension}` : fileName
+  const fullFilePath = path.join(filePathRelative, fileFullName)
+  fs.writeFile(fullFilePath, content ?? "", (err) => {
     if (err) {
-      console.error(`Error al crear el archivo: ${filePath}`, err)
+      console.error(`Error al crear el archivo: ${fullFilePath}`, err)
     } else {
-      console.log(`Archivo creado: ${filePath}`)
+      console.log(`Archivo creado: ${fullFilePath}`)
     }
   })
 }
 
-// Función principal para crear carpetas y archivos
-async function createFoldersWithFiles(
-  folders: { name: string; extension: string; content: string }[]
-): Promise<void> {
-  for (const folder of folders) {
-    const folderPath = path.join(process.cwd(), folder.name)
-    await createFolder(folderPath)
-
-    const filePath = path.join(folderPath, `default.${folder.extension}`)
-    await createFile("", filePath, folder.content)
-  }
-}
-
-// Ejemplo de uso
-const folders = [
-  {
-    name: "carpeta1",
-    extension: "txt",
-    content: "Contenido por defecto para carpeta1",
-  },
-  {
-    name: "carpeta2",
-    extension: "md",
-    content: "Contenido por defecto para carpeta2",
-  },
-  {
-    name: "carpeta3",
-    extension: "html",
-    content: "<h1>Contenido por defecto para carpeta3</h1>",
-  },
-]
-
-createFoldersWithFiles(folders)
+export { createFolder, createFile }
