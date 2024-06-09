@@ -1,17 +1,25 @@
 {
   "name": "bcfiles",
-  "version": "1.0.0",
-  "main": "index.js",
+  "description": "Bundle creator files",
+  "version": "1.0.1",
+  "main": "src/index.ts",
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc": "tsc",
-    "dev": "ts-node-dev src/index.ts"
+    "build": "tsc",
+    "dev": "ts-node-dev src/index.ts",
+    "prepublishOnly": "pnpm run build"
   },
-  "keywords": [],
+  "keywords": ["bundle", "creator", "files", "bcfiles", "bcf", "ts", "typescript", "node", "nodejs", "node.js", "node.js typescript", "node.js typescript bundle", "node.js typescript bundle creator", "node.js typescript bundle creator files", "node.js typescript bundle creator files bcfiles", "node.js typescript bundle creator files bcf", "node.js typescript bundle creator files bcfiles bcf", "filesystem"],
   "author": "Joshtin.Dev",
   "license": "ISC",
-  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshtin2505/bc-files.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joshtin2505/bc-files/issues"
+  },
   "devDependencies": {
     "@eslint/js": "^9.4.0",
     "@types/node": "^20.14.2",
