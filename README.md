@@ -10,6 +10,9 @@ npm install bcfiles
 ```sh
 pnpm install bcfiles
 ```
+```sh
+yarn add bcfiles
+```
 ## API
 
 ### `createFolder(props: CreateFolderProps): Promise<void>`
