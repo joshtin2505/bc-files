@@ -1,6 +1,6 @@
 import fs from "fs"
 import path from "path"
-import type { CreateFileProps, CreateFolderProps } from "./types.d"
+import type { CreateFileProps, CreateFolderProps } from "./types"
 
 /**
  * Creates one or more folders in the file system.
