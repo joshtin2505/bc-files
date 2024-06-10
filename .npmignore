@@ -5,3 +5,5 @@ src/
 node_modules/
 tsconfig.json
 README.md
+.prettierrc
+eslint.config.mjs
