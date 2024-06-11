@@ -1,7 +1,7 @@
 {
   "name": "bcfiles",
   "description": "Bundle creator files",
-  "version": "1.2.6",
+  "version": "1.2.8",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -23,6 +23,7 @@
     "bcf",
     "ts",
     "typescript",
+    "javascript",
     "node",
     "nodejs",
     "node.js",
@@ -33,7 +34,9 @@
     "node.js typescript bundle creator files bcfiles",
     "node.js typescript bundle creator files bcf",
     "node.js typescript bundle creator files bcfiles bcf",
-    "filesystem"
+    "filesystem",
+    "fs",
+    "fs-extra"
   ],
   "author": "Joshtin.Dev",
   "license": "MIT",
