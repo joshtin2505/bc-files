@@ -44,6 +44,7 @@
   "bugs": {
     "url": "https://github.com/joshtin2505/bc-files/issues"
   },
+  "homepage": "https://bcfiles.vercel.app/",
   "devDependencies": {
     "@eslint/js": "^9.4.0",
     "@types/node": "^20.14.2",
