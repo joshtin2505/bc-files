@@ -1,7 +1,7 @@
 {
   "name": "bcfiles",
   "description": "Bundle creator files - This package is designed to save time creating folders and files when starting a project. Additionally, it can be used to add folder and file creation functionality to your software.",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
