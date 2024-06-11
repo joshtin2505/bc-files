@@ -1,6 +1,6 @@
-# bcfiles
+# BCFiles - Bundle Creator Files
 
-A bundle creator files
+This package is designed to save time creating folders and files when starting a project. Additionally, it can be used to add folder and file creation functionality to your software.
 
 ## Installation
 
